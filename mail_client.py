@@ -33,24 +33,47 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Arg: recipient: receiver of mail
+    
+    Receives all mail sent to a certain recipient by sending a GET request to the
+    endpoint with matching recipient name. Then, it prints the response from the server.
+    
+    Returns: None
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Arg: sender: the sender of mail
+    
+    Receives all mail sent from a certain sender by sending a GET request to the endpoint with
+    matching sender. Then, it prints the response from the server.
+    
+    Returns: None
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Arg: mail_id: unique ID assigned to a mail entry
+    
+    Receives the mail with the matching ID by sending a GET request to the endpoint with 
+    matching ID. Then, it prints the response. 
+    
+    Returns: none
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Arg: mail_id: unique ID assigned to a mail entry
+    
+    Deletes the mail with the matching ID by sending a DELETE request.
+    
+    Returns: None
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
